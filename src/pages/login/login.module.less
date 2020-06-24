@@ -1,3 +1,39 @@
+@import '../../theme/less/colors.less';
+
 .container {
-  background-color: cyan;
+  flex: 1;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to top right, @third-color, @secondary-color);
+}
+
+.card {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: @white;
+
+  .left {
+    width: 42%;
+    height: 100%;
+    display: inline-block;
+    background-color: @primary-color;
+  }
+
+  .right {
+    width: 58%;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .card {
+    .left {
+      display: none;
+    }
+  }
 }
