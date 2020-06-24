@@ -1,5 +1,4 @@
 import LoginPage from '../pages/login'
-import AppPage from '../pages/app'
 
 const routes = [
   {
@@ -15,13 +14,6 @@ const routes = [
     layout: true,
     private: false,
     component: LoginPage
-  },
-  {
-    path: '/app',
-    exact: true,
-    layout: true,
-    private: false,
-    component: AppPage
   }
 ]
 
