@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
+  watch: true,
   devServer: {
     hot: true,
     historyApiFallback: true
@@ -37,7 +38,27 @@ module.exports = {
       },
       {
         test: /\.(png|j?g|svg|gif)?$/,
-        use: 'file-loader'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/fonts/'
+            }
+          }
+        ]
       }
     ]
   },
@@ -48,8 +69,7 @@ module.exports = {
       template: path.resolve(__dirname, 'public/index.html')
     }),
     new webpack.EnvironmentPlugin({
-      API_URL: 'http://localhost:8000',
-      GH_CLIENT_ID: 'Iv1.a77100850ebb1d4d'
+      API_URL: 'http://localhost:8000'
     }),
     new webpack.ProvidePlugin({
       Cookies: 'js-cookie/src/js.cookie.js'
